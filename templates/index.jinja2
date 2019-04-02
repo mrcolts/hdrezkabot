@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="" method="post">
+        <textarea name="text" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="send">
+    </form>
+
+    {% for msg in messages %}
+        <hr>
+        {{ msg.id }}<br>
+        {{ msg.last_update }}<br>
+        {{ msg.recipient }}<br>
+        {{ msg.status}}<br>
+        {{ msg.body}}<br>
+        {{ msg.error}}<br>
+
+    {% endfor %}
+</body>
+</html>

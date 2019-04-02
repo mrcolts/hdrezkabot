@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  rethinkdb:
+    container_name: hdrezka-rethink
+    image: rethinkdb
+    volumes:
+      - /tmp/db_data:/data
+    ports:
+      - 8080:8080
+      - 28015:28015
+
+  bot:
+    build: .
+    command: bash -c "python /app/init_rethink.py && python /app/bot.py"
+    environment:
+      - PYTHONUNBUFFERED = 1
+
+  broadcast:
+    build: .
+    command: bash -c "python /app/init_rethink.py && python /app/broadcast.py"
+    environment:
+      - PYTHONUNBUFFERED = 1
+
+  web:
+    build: .
+    ports:
+      - 8888:8888
+    command: bash -c "python /app/init_rethink.py && python /app/app.py"
+    environment:
+      - PYTHONUNBUFFERED = 1
+
+  parsers:
+      build: .
+      command: bash -c "python /app/init_rethink.py && python /app/daemon_parsers.py"
+      environment:
+        - PYTHONUNBUFFERED = 1

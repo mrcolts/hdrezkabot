@@ -1,0 +1,12 @@
+- use mq, instead of rdb feeds
+- add create message at update parser
+- test all system
+- bot str mistackes
+- bot add exclude voice
+- bot watch code logic
+- add config class/.ini/env
+- add docker things
+
+
+- project structure
+- WEB UI (rdb tables, send messages, watch message status, etc.)
